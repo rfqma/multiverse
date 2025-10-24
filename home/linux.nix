@@ -171,6 +171,7 @@
       "react-typescript-snippets"
       "python-snippets"
       "mcp-server-figma"
+      "matte-black"
     ];
     userKeymaps = [
       {
@@ -256,7 +257,7 @@
         show_parameter_hints = true;
         show_other_hints = true;
         show_background = false;
-        edit_debounce_ms = 700;
+        edit_debounce_ms = 500;
         scroll_debounce_ms = 50;
         toggle_on_modifiers_press = {
           control = false;
@@ -275,15 +276,16 @@
       };
       icon_theme = {
         mode = "system";
-        light = "Zed (Default)";
+        # light = "Zed (Default)";
+        light = "Catppuccin Frappé";
         dark = "Catppuccin Frappé";
       };
-      ui_font_size = 11.0;
+      ui_font_size = 12.0;
       buffer_font_size = 11.0;
       theme = {
         mode = "system";
-        light = "One Light";
-        dark = "Ayu Dark";
+        light = "Matte Black";
+        dark = "Matte Black";
       };
     };
   };
