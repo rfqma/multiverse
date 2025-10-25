@@ -78,6 +78,20 @@
         // {
           default = pkgs.mkShellNoCC {
             packages = common ++ scripts;
+
+            shellHook = ''
+                echo "❄️ triggered a shell hook for a Nix development environment."
+                echo "❄️ welcome!"
+
+                # launch zsh
+                if [ -n "$ZSH_VERSION" ]; then
+                  # Already in zsh, do nothing
+                  :
+                elif command -v zsh >/dev/null 2>&1; then
+                  # Launch zsh if available
+                  exec zsh
+                fi
+            '';
           };
         }
       );

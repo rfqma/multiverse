@@ -17,6 +17,9 @@
     WHERE_AM_I = "in the multiverse!";
 
     shellHook = ''
+        echo "❄️ triggered a shell hook for a Nix development environment."
+        echo "❄️ welcome!"
+
         # launch zsh
         if [ -n "$ZSH_VERSION" ]; then
           # Already in zsh, do nothing
@@ -25,9 +28,6 @@
           # Launch zsh if available
           exec zsh
         fi
-
-      echo "triggered a shell hook for a Nix development environment."
-      echo "❄️ welcome!"
     '';
   };
 
@@ -38,6 +38,9 @@
     ];
 
     shellHook = ''
+        echo "❄️ triggered a shell hook for a Nix development environment."
+        echo "❄️ welcome!"
+
         # launch zsh
         if [ -n "$ZSH_VERSION" ]; then
           # Already in zsh, do nothing
@@ -46,9 +49,6 @@
           # Launch zsh if available
           exec zsh
         fi
-
-      echo "triggered a shell hook for a Nix development environment with C++."
-      echo "❄️ welcome!"
     '';
   };
 }
