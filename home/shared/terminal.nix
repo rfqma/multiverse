@@ -17,7 +17,7 @@
       # status bar customization
       set -g status-position top
       set -g status-style 'bg=default,fg=blue'
-      set -g status-left ''
+      set -g status-left ""
       set -g status-right '#[fg=yellow,bold]%Y-%m-%d %H:%M'
       set -g window-status-current-format '#[bold,fg=green] #I: #W '
       set -g window-status-format '#[fg=gray] #I: #W '
