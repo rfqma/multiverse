@@ -24,7 +24,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 #### [home-manager](https://github.com/nix-community/home-manager)
 
 ```bash
-nix profile install nixpkgs#home-manager
+nix profile add nixpkgs#home-manager
 ```
 
 ### Development Environment

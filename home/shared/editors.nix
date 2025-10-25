@@ -11,45 +11,32 @@
     vimAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      # Essential plugins for beginners
-
-      # File explorer (like VSCode sidebar)
+      # File explorer
       nvim-tree-lua
-
       # Status line (bottom bar with info)
       lualine-nvim
-
       # Fuzzy finder (Ctrl+P equivalent)
       telescope-nvim
       plenary-nvim  # Required by telescope
-
       # Syntax highlighting
       nvim-treesitter.withAllGrammars
-
       # Color scheme
       tokyonight-nvim
-
       # Auto-completion
       nvim-cmp
       cmp-nvim-lsp
       cmp-buffer
       cmp-path
-
       # LSP (Language Server Protocol)
       nvim-lspconfig
-
       # Git integration
       gitsigns-nvim
-
       # Auto pairs (brackets, quotes)
       nvim-autopairs
-
       # Comment toggling
       comment-nvim
-
       # Which-key (shows available keybindings)
       which-key-nvim
-
       # Icons (for nvim-tree and others)
       nvim-web-devicons
     ];
@@ -66,24 +53,20 @@
       vim.opt.wrap = false           -- Don't wrap lines
       vim.opt.cursorline = true      -- Highlight current line
       vim.opt.termguicolors = true   -- True color support
-
       -- Set leader key (like Ctrl in VSCode shortcuts)
       vim.g.mapleader = " "  -- Space as leader key
-
       -- Color scheme
       require('tokyonight').setup({
         style = "night",
         transparent = false,
       })
       vim.cmd([[colorscheme tokyonight]])
-
       -- Status line
       require('lualine').setup({
         options = {
           theme = 'tokyonight'
         }
       })
-
       -- File explorer
       require('nvim-tree').setup({
         view = {
@@ -93,7 +76,6 @@
           group_empty = true,
         },
       })
-
       -- Telescope (fuzzy finder)
       require('telescope').setup({
         defaults = {
@@ -101,14 +83,12 @@
           selection_caret = " ",
         }
       })
-
       -- Treesitter (syntax highlighting)
       require('nvim-treesitter.configs').setup({
         highlight = {
           enable = true,
         },
       })
-
       -- Auto-completion
       local cmp = require('cmp')
       cmp.setup({
@@ -125,51 +105,37 @@
           { name = 'path' },
         })
       })
-
       -- LSP setup for common languages
       local lspconfig = require('lspconfig')
 
       -- TypeScript/JavaScript
       lspconfig.ts_ls.setup({})
-
       -- Python
       lspconfig.pyright.setup({})
-
       -- Go
       lspconfig.gopls.setup({})
-
       -- Rust
       lspconfig.rust_analyzer.setup({})
-
       -- Git signs
       require('gitsigns').setup()
-
       -- Auto pairs
       require('nvim-autopairs').setup({})
-
       -- Comment
       require('Comment').setup()
-
       -- Which-key
       require('which-key').setup({})
-
       -- Key mappings (shortcuts)
       local keymap = vim.keymap.set
-
       -- File explorer
       keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle file explorer' })
-
       -- Telescope
       keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
       keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', { desc = 'Live grep' })
       keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', { desc = 'Find buffers' })
-
       -- Save file
       keymap('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
-
       -- Quit
       keymap('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
-
       -- Split windows
       keymap('n', '<leader>sv', ':vsplit<CR>', { desc = 'Split vertically' })
       keymap('n', '<leader>sh', ':split<CR>', { desc = 'Split horizontally' })
@@ -342,12 +308,6 @@
         shd101wyy.markdown-preview-enhanced
         # Svelte
         svelte.svelte-vscode
-
-        heybourn.headwind
-        jeff-hykin.better-dockerfile-syntax
-        mechatroner.rainbow-csv
-        Prisma.prisma
-        wix.vscode-import-cost
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         # Extensions that aren't in nixpkgs yet
       ];

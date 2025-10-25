@@ -80,7 +80,7 @@
             packages = common ++ scripts;
 
             shellHook = ''
-                echo "❄️ triggered a shell hook for a Nix development environment."
+                echo "❄️triggered a shell hook for a Nix development environment."
                 echo "❄️ welcome!"
 
                 # launch zsh

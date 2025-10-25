@@ -7,8 +7,6 @@
     ./shared/tools.nix
   ];
 
-  programs.home-manager.enable = true;
-
   home.packages = with pkgs; [
     tmux  # Ensure tmux is available system-wide
   ];
