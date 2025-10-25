@@ -15,13 +15,13 @@ A comprehensive, cross-platform development environment and dotfiles configurati
 
 ### Prerequisites
 
-- [nix](https://nixos.org/download.html) with flakes enabled:
+#### [Nix](https://nixos.org/download.html) (with flakes enabled)
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-- [home-manager](https://github.com/nix-community/home-manager):
+#### [home-manager](https://github.com/nix-community/home-manager)
 
 ```bash
 nix profile install nixpkgs#home-manager
