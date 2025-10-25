@@ -315,75 +315,41 @@
       extensions = with pkgs.vscode-extensions; [
         # Nix
         bbenoist.nix
-
         # Web Development
         bradlc.vscode-tailwindcss
         christian-kohler.npm-intellisense
         christian-kohler.path-intellisense
-
         # Git
         eamodio.gitlens
-
         # HTML/CSS
         ecmel.vscode-html-css
-
         # GitHub
         github.copilot
         github.copilot-chat
         github.github-vscode-theme
         github.vscode-github-actions
-
         # Go
         golang.go
-
         # Docker
         ms-azuretools.vscode-docker
-
         # Python
         ms-python.python
         ms-python.vscode-pylance
         ms-toolsai.jupyter
-
         # Themes & Icons
         pkief.material-icon-theme
-
         # Markdown
         shd101wyy.markdown-preview-enhanced
-
         # Svelte
         svelte.svelte-vscode
+
+        heybourn.headwind
+        jeff-hykin.better-dockerfile-syntax
+        mechatroner.rainbow-csv
+        Prisma.prisma
+        wix.vscode-import-cost
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         # Extensions that aren't in nixpkgs yet
-        {
-          name = "headwind";
-          publisher = "heybourn";
-          version = "1.7.0";
-          sha256 = "sha256-PLACEHOLDER"; # You'll need to get the real sha256
-        }
-        {
-          name = "better-dockerfile-syntax";
-          publisher = "jeff-hykin";
-          version = "1.0.0";
-          sha256 = "sha256-PLACEHOLDER";
-        }
-        {
-          name = "rainbow-csv";
-          publisher = "mechatroner";
-          version = "3.11.0";
-          sha256 = "sha256-PLACEHOLDER";
-        }
-        {
-          name = "prisma";
-          publisher = "prisma";
-          version = "5.19.1";
-          sha256 = "sha256-PLACEHOLDER";
-        }
-        {
-          name = "vscode-import-cost";
-          publisher = "wix";
-          version = "3.3.0";
-          sha256 = "sha256-PLACEHOLDER";
-        }
       ];
       userSettings = {
         "editor.formatOnSave" = true;

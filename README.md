@@ -1,13 +1,13 @@
-# 🌌 Multiverse - Universal Nix Development Environment
+# 🌌 Multiverse - Nix Development Environment
 
 A comprehensive, cross-platform development environment and dotfiles configuration powered by Nix flakes and Home Manager.
 
-## ✨ Features
+## ✨ What's Inside
 
 - **🖥️ Cross-Platform**: macOS (Intel/ARM) and Linux (x86_64/ARM64)
-- **🛠️ Development Tools**: Rust, Go, Python, JavaScript, C++, Node.js
-- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Tmux, Ghostty, Zed, VSCode
-- **📦 System Tools**: Podman, Archive tools (7zip, unrar, etc), htop, curl, jq
+- **🛠️ Development Tools**: Rust, Go, Python, C++, Node.js
+- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Tmux, Ghostty, Zed, VSCode, Vim, Neovim
+- **📦 System Tools**: Podman, Podman Compose, Archive tools (7zip), htop, curl, jq
 - **🏠 Home Manager**: Declarative dotfiles management
 - **📋 Template System**: Quick-start templates for new projects
 
@@ -28,42 +28,56 @@ nix profile install nixpkgs#home-manager
 ```
 
 ### Development Environment
+
 ```bash
-# Enter the default development shell
+# default development shell
 nix develop github:rfqma/multiverse
 ```
 
 ```bash
-# Use specific development environment
+# specific development environment
 nix develop github:rfqma/multiverse#minimal
 nix develop github:rfqma/multiverse#cpp
 ```
 
 ### Home Manager (dotfiles)
 ```bash
-# For macOS ARM (M1/M2/M3)
-home-manager switch --flake github:rfqma/multiverse#mac-arm
+# For macOS ARM
+home-manager switch --flake github:rfqma/multiverse#mac-arm --refresh
 
 # For Linux x86_64
-home-manager switch --flake github:rfqma/multiverse#linux-x86
+home-manager switch --flake github:rfqma/multiverse#linux-x86 --refresh
 ```
 
 ### Project Templates
 ```bash
+# create directory
+mkdir my-project && cd my-project
+```
+```bash
 # Rust project
 nix flake init -t github:rfqma/multiverse#rust-dev
-
 # Go project
 nix flake init -t github:rfqma/multiverse#go-dev
-
 # JavaScript project
 nix flake init -t github:rfqma/multiverse#js-dev
-
 # Python project
 nix flake init -t github:rfqma/multiverse#python-dev
-
 # C++ project
 nix flake init -t github:rfqma/multiverse#cpp-dev
+```
+```bash
+# trigger flake.nix
+nix develop
+```
+
+### 🔁 Continuous
+```bash
+# Clear Nix cache
+nix registry pin github:rfqma/multiverse
+
+# Update flake inputs
+nix flake update
 ```
 
 ### 📦 Included Tools & Configurations
@@ -72,7 +86,7 @@ nix flake init -t github:rfqma/multiverse#cpp-dev
 - **🦀 Rust** (rustc, cargo, rustfmt)
 - **🐹 Go** (go toolchain)
 - **🐍 Python** (3.12 + JupyterLab)
-- **🌐 JavaScript/Node.js** (nodejs, npm)
+- **🌐 Node.js** (nodejs, npm)
 - **🚀 C++** (gcc, cmake)
 
 #### Editors & IDEs
@@ -89,7 +103,7 @@ nix flake init -t github:rfqma/multiverse#cpp-dev
 #### System & Container Tools
 - **Git** - Configured with sensible defaults
 - **Podman** + **Podman Compose** - Container runtime
-- **Archive Tools** - 7zip, unzip, unrar, tar, gzip, etc.
+- **Archive Tools** - 7zip
 - **System Utilities** - htop, tree, curl, wget, jq
 
 ### 🏗️ Configuration Structure
@@ -109,26 +123,4 @@ multiverse/
 │   ├── shell.nix        # Development shells
 │   └── templates/       # Project templates
 └── flake.nix           # Main flake configuration
-```
-
-### 🔧 Customization
-
-Fork this repository and modify the configurations in `home/shared/` to match your preferences:
-- **Git**: Update username/email in `git.nix
-- **Shell**: Add your aliases in `shell.nix
-- **VSCode**: Modify settings in `editors.nix
-- **Tools**: Add/remove packages in `tools.nix
-
-### 📝 Usage Examples
-```bash
-# Quick development environment for any project
-nix develop github:rfqma/multiverse
-
-# Apply dotfiles to new machine
-home-manager switch --flake github:rfqma/multiverse#mac-arm
-
-# Create new Rust project
-mkdir my-rust-app && cd my-rust-app
-nix flake init -t github:rfqma/multiverse#rust-dev
-nix develop
 ```
