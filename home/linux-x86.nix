@@ -9,6 +9,11 @@
 
   home.packages = with pkgs; [
     tmux  # Ensure tmux is available system-wide
+    bitwarden-desktop
+    spotify
+    discord
+    whatsapp-electron
+    telegram-desktop
   ];
 
   # Linux-specific overrides can go here
