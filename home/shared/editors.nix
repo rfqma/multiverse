@@ -1,13 +1,7 @@
 { pkgs, ... }:
 
 {
-  fonts.fontconfig.enable = true;
-
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode" "JetBrainsMono"]; })
-
-    inter
-    sf-mono-liga-bin
   ];
 
   programs.neovim = {
@@ -325,7 +319,6 @@
       bradlc.vscode-tailwindcss
       christian-kohler.npm-intellisense
       christian-kohler.path-intellisense
-      dsznajder.es7-react-js-snippets
 
       # Git
       eamodio.gitlens
@@ -352,9 +345,6 @@
 
       # Themes & Icons
       pkief.material-icon-theme
-
-      # Database
-      ms-ossdata.vscode-postgresql
 
       # Markdown
       shd101wyy.markdown-preview-enhanced
