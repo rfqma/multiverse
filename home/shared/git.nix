@@ -3,9 +3,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "rfqma";
-    userEmail = "abelcaster025@gmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "rfqma";
+        email = "abelcaster025@gmail.com";
+      };
       init.defaultBranch = "main";
       pull.rebase = false;
       core.autocrlf = "input";

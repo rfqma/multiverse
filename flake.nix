@@ -79,6 +79,17 @@
         // {
           default = pkgs.mkShellNoCC {
             packages = common ++ scripts;
+
+            shellHook = ''
+                # auto-launch zsh
+                if [ -n "$ZSH_VERSION" ]; then
+                  # already in zsh, do nothing
+                  :
+                elif command -v zsh >/dev/null 2>&1; then
+                  # launch zsh if available
+                  exec zsh
+                fi
+            '';
           };
         }
       );

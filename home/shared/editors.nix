@@ -311,200 +311,201 @@
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      # Nix
-      bbenoist.nix
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        # Nix
+        bbenoist.nix
 
-      # Web Development
-      bradlc.vscode-tailwindcss
-      christian-kohler.npm-intellisense
-      christian-kohler.path-intellisense
+        # Web Development
+        bradlc.vscode-tailwindcss
+        christian-kohler.npm-intellisense
+        christian-kohler.path-intellisense
 
-      # Git
-      eamodio.gitlens
+        # Git
+        eamodio.gitlens
 
-      # HTML/CSS
-      ecmel.vscode-html-css
+        # HTML/CSS
+        ecmel.vscode-html-css
 
-      # GitHub
-      github.copilot
-      github.copilot-chat
-      github.github-vscode-theme
-      github.vscode-github-actions
+        # GitHub
+        github.copilot
+        github.copilot-chat
+        github.github-vscode-theme
+        github.vscode-github-actions
 
-      # Go
-      golang.go
+        # Go
+        golang.go
 
-      # Docker
-      ms-azuretools.vscode-docker
+        # Docker
+        ms-azuretools.vscode-docker
 
-      # Python
-      ms-python.python
-      ms-python.vscode-pylance
-      ms-toolsai.jupyter
+        # Python
+        ms-python.python
+        ms-python.vscode-pylance
+        ms-toolsai.jupyter
 
-      # Themes & Icons
-      pkief.material-icon-theme
+        # Themes & Icons
+        pkief.material-icon-theme
 
-      # Markdown
-      shd101wyy.markdown-preview-enhanced
+        # Markdown
+        shd101wyy.markdown-preview-enhanced
 
-      # Svelte
-      svelte.svelte-vscode
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      # Extensions that aren't in nixpkgs yet
-      {
-        name = "headwind";
-        publisher = "heybourn";
-        version = "1.7.0";
-        sha256 = "sha256-PLACEHOLDER"; # You'll need to get the real sha256
-      }
-      {
-        name = "better-dockerfile-syntax";
-        publisher = "jeff-hykin";
-        version = "1.0.0";
-        sha256 = "sha256-PLACEHOLDER";
-      }
-      {
-        name = "rainbow-csv";
-        publisher = "mechatroner";
-        version = "3.11.0";
-        sha256 = "sha256-PLACEHOLDER";
-      }
-      {
-        name = "prisma";
-        publisher = "prisma";
-        version = "5.19.1";
-        sha256 = "sha256-PLACEHOLDER";
-      }
-      {
-        name = "vscode-import-cost";
-        publisher = "wix";
-        version = "3.3.0";
-        sha256 = "sha256-PLACEHOLDER";
-      }
-    ];
-
-    userSettings = {
-      "editor.formatOnSave" = true;
-
-      # Dart specific settings
-      "[dart]" = {
+        # Svelte
+        svelte.svelte-vscode
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        # Extensions that aren't in nixpkgs yet
+        {
+          name = "headwind";
+          publisher = "heybourn";
+          version = "1.7.0";
+          sha256 = "sha256-PLACEHOLDER"; # You'll need to get the real sha256
+        }
+        {
+          name = "better-dockerfile-syntax";
+          publisher = "jeff-hykin";
+          version = "1.0.0";
+          sha256 = "sha256-PLACEHOLDER";
+        }
+        {
+          name = "rainbow-csv";
+          publisher = "mechatroner";
+          version = "3.11.0";
+          sha256 = "sha256-PLACEHOLDER";
+        }
+        {
+          name = "prisma";
+          publisher = "prisma";
+          version = "5.19.1";
+          sha256 = "sha256-PLACEHOLDER";
+        }
+        {
+          name = "vscode-import-cost";
+          publisher = "wix";
+          version = "3.3.0";
+          sha256 = "sha256-PLACEHOLDER";
+        }
+      ];
+      userSettings = {
         "editor.formatOnSave" = true;
-        "editor.formatOnType" = true;
-        "editor.rulers" = [80];
-        "editor.selectionHighlight" = false;
-        "editor.suggest.snippetsPreventQuickSuggestions" = false;
-        "editor.suggestSelection" = "first";
-        "editor.tabCompletion" = "onlySnippets";
-        "editor.wordBasedSuggestions" = "off";
-      };
 
-      # Go specific settings
-      "[go]" = {
-        "editor.insertSpaces" = false;
-        "editor.formatOnSave" = true;
-        "editor.codeActionsOnSave" = {
-          "source.organizeImports" = "explicit";
+        # Dart specific settings
+        "[dart]" = {
+          "editor.formatOnSave" = true;
+          "editor.formatOnType" = true;
+          "editor.rulers" = [80];
+          "editor.selectionHighlight" = false;
+          "editor.suggest.snippetsPreventQuickSuggestions" = false;
+          "editor.suggestSelection" = "first";
+          "editor.tabCompletion" = "onlySnippets";
+          "editor.wordBasedSuggestions" = "off";
         };
-      };
 
-      # TypeScript React
-      "[typescriptreact]" = {
+        # Go specific settings
+        "[go]" = {
+          "editor.insertSpaces" = false;
+          "editor.formatOnSave" = true;
+          "editor.codeActionsOnSave" = {
+            "source.organizeImports" = "explicit";
+          };
+        };
+
+        # TypeScript React
+        "[typescriptreact]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+
+        # TailwindCSS
+        "tailwindCSS.includeLanguages" = {
+          "html" = "html";
+          "javascript" = "javascript";
+          "css" = "css";
+        };
+
+        # Editor settings
+        "editor.quickSuggestions" = {
+          "strings" = true;
+        };
+        "editor.accessibilitySupport" = "off";
+        "editor.fontFamily" = "'Liga SFMono Nerd Font'";
+        "editor.fontWeight" = "400";
+        "editor.fontLigatures" = false;
+        "editor.letterSpacing" = 0.3;
+        "editor.lineHeight" = 1.5;
+        "editor.fontSize" = 13;
+        "editor.tabSize" = 2;
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
+        "editor.formatOnPaste" = true;
+        "editor.inlineSuggest.enabled" = true;
+        "editor.minimap.enabled" = false;
 
-      # TailwindCSS
-      "tailwindCSS.includeLanguages" = {
-        "html" = "html";
-        "javascript" = "javascript";
-        "css" = "css";
-      };
+        # Terminal
+        "terminal.integrated.fontFamily" = "'Liga SFMono Nerd Font'";
+        "terminal.integrated.env.osx" = {};
+        "terminal.integrated.env.linux" = {};
+        "terminal.integrated.env.windows" = {};
 
-      # Editor settings
-      "editor.quickSuggestions" = {
-        "strings" = true;
-      };
-      "editor.accessibilitySupport" = "off";
-      "editor.fontFamily" = "'Liga SFMono Nerd Font'";
-      "editor.fontWeight" = "400";
-      "editor.fontLigatures" = false;
-      "editor.letterSpacing" = 0.3;
-      "editor.lineHeight" = 1.5;
-      "editor.fontSize" = 13;
-      "editor.tabSize" = 2;
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "editor.formatOnPaste" = true;
-      "editor.inlineSuggest.enabled" = true;
-      "editor.minimap.enabled" = false;
-
-      # Terminal
-      "terminal.integrated.fontFamily" = "'Liga SFMono Nerd Font'";
-      "terminal.integrated.env.osx" = {};
-      "terminal.integrated.env.linux" = {};
-      "terminal.integrated.env.windows" = {};
-
-      # Workbench
-      "workbench.sideBar.location" = "right";
-      "workbench.startupEditor" = "none";
-      "workbench.iconTheme" = "material-icon-theme";
-      "workbench.colorTheme" = "GitHub Dark Dimmed";
-      "workbench.editor.empty.hint" = "hidden";
-      "workbench.editorAssociations" = {
-        "*.docx" = "default";
-      };
-
-      # Emmet
-      "emmet.includeLanguages" = {
-        "javascript" = "javascriptreact";
-        "typescript" = "typescriptreact";
-      };
-
-      # CSS
-      "css.lint.unknownAtRules" = "ignore";
-
-      # JavaScript
-      "javascript.updateImportsOnFileMove.enabled" = "always";
-
-      # Notebook
-      "notebook.cellFocusIndicator" = "border";
-      "notebook.formatOnSave.enabled" = true;
-      "notebook.output.scrolling" = true;
-      "notebook.output.textLineLimit" = 100;
-
-      # Git
-      "git.autofetch" = true;
-
-      # Remote
-      "remote.autoForwardPortsSource" = "hybrid";
-
-      # Solidity
-      "solidity.telemetry" = true;
-
-      # Chat/AI
-      "chat.mcp.discovery.enabled" = {
-        "claude-desktop" = true;
-        "windsurf" = true;
-        "cursor-global" = true;
-        "cursor-workspace" = true;
-      };
-      "chat.agent.enabled" = true;
-      "chat.mcp.access" = "all";
-      "chat.mcp.serverSampling" = {
-        "Global in Code: Figma MCP" = {
-          "allowedModels" = ["copilot/claude-sonnet-4.5"];
+        # Workbench
+        "workbench.sideBar.location" = "right";
+        "workbench.startupEditor" = "none";
+        "workbench.iconTheme" = "material-icon-theme";
+        "workbench.colorTheme" = "GitHub Dark Dimmed";
+        "workbench.editor.empty.hint" = "hidden";
+        "workbench.editorAssociations" = {
+          "*.docx" = "default";
         };
+
+        # Emmet
+        "emmet.includeLanguages" = {
+          "javascript" = "javascriptreact";
+          "typescript" = "typescriptreact";
+        };
+
+        # CSS
+        "css.lint.unknownAtRules" = "ignore";
+
+        # JavaScript
+        "javascript.updateImportsOnFileMove.enabled" = "always";
+
+        # Notebook
+        "notebook.cellFocusIndicator" = "border";
+        "notebook.formatOnSave.enabled" = true;
+        "notebook.output.scrolling" = true;
+        "notebook.output.textLineLimit" = 100;
+
+        # Git
+        "git.autofetch" = true;
+
+        # Remote
+        "remote.autoForwardPortsSource" = "hybrid";
+
+        # Solidity
+        "solidity.telemetry" = true;
+
+        # Chat/AI
+        "chat.mcp.discovery.enabled" = {
+          "claude-desktop" = true;
+          "windsurf" = true;
+          "cursor-global" = true;
+          "cursor-workspace" = true;
+        };
+        "chat.agent.enabled" = true;
+        "chat.mcp.access" = "all";
+        "chat.mcp.serverSampling" = {
+          "Global in Code: Figma MCP" = {
+            "allowedModels" = ["copilot/claude-sonnet-4.5"];
+          };
+        };
+
+        # Svelte
+        "svelte.enable-ts-plugin" = true;
+
+        # GitHub Copilot
+        "github.copilot.nextEditSuggestions.enabled" = true;
+
+        # GitLens
+        "gitlens.ai.model" = "vscode";
+        "gitlens.ai.vscode.model" = "copilot:gpt-4.1";
       };
-
-      # Svelte
-      "svelte.enable-ts-plugin" = true;
-
-      # GitHub Copilot
-      "github.copilot.nextEditSuggestions.enabled" = true;
-
-      # GitLens
-      "gitlens.ai.model" = "vscode";
-      "gitlens.ai.vscode.model" = "copilot:gpt-4.1";
     };
   };
 }
