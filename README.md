@@ -1,107 +1,134 @@
-## Overview
+# 🌌 Multiverse - Universal Nix Development Environment
 
-This repository contains a development environment setup using Nix flakes and Home Manager. It provides a reproducible and consistent environment across different operating systems, with a special focus on creating a fully isolated development shell that coexists with a managed home environment. It includes development tools, shell configuration, and editor setups.
+A comprehensive, cross-platform development environment and dotfiles configuration powered by Nix flakes and Home Manager.
 
-## Features
+## ✨ Features
 
-- **Cross-platform compatibility**: Supports macOS (aarch64-darwin) and Linux (x86_64-linux).
-- **Isolated Development Shell**: The `nix develop` shell is fully isolated, with its own `HOME` directory to keep toolchains and build artifacts separate from main environment.
-- **Shared Shell Configuration**: Zsh and Starship configuration is shared between the isolated shell and main environment for a consistent experience.
-- **Declarative Dotfiles**: Home Manager is used to declaratively manage dotfiles and application configurations.
-- **Reproducible Environments**: Nix flakes ensure to get the exact same environment every time.
+- **🖥️ Cross-Platform**: macOS (Intel/ARM) and Linux (x86_64/ARM64)
+- **🛠️ Development Tools**: Rust, Go, Python, JavaScript, C++, Node.js
+- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Tmux, Ghostty, Zed, VSCode
+- **📦 System Tools**: Podman, Archive tools (7zip, unrar, etc), htop, curl, jq
+- **🏠 Home Manager**: Declarative dotfiles management
+- **📋 Template System**: Quick-start templates for new projects
 
-## What's Included
-
-### Development Tools
-
-The development shell comes pre-configured with:
-
-- node.js
-- python3 with jupyterlab
-- go
-- rust (rustc, rustfmt, cargo)
-- git
-- ngrok
-- gemini-cli
-
-### GUI Applications Config
-
-Home Manager is configured to manage:
-
-- **Zed**: high-performance, multiplayer code editor.
-- **Zsh** with a shared configuration and custom aliases.
-- **Starship** prompt with a clean, informative display.
-- **Ghostty** fast, GPU-accelerated terminal emulator.
-
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 
 - [nix](https://nixos.org/download.html) with flakes enabled:
 
-  ```bash
-  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-  ```
-
-- [vscode](https://code.visualstudio.com/)
-- [zed](https://zed.dev/)
-- [ghostty](https://ghostty.org)
-- [podman](https://podman.io)
-- [podman-compose](https://github.com/containers/podman-compose)
-
-### Home Manager Setup
-
-To set up main environment (outside the dev shell), run the activation command for specific OS.
-
-**For macOS:**
-
 ```bash
-nix run github:rfqma/multiverse#homeConfigurations.mac.activationPackage --refresh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-**For Linux:**
+- [home-manager](https://github.com/nix-community/home-manager):
 
 ```bash
-nix run github:rfqma/multiverse#homeConfigurations.linux.activationPackage --refresh
+nix profile install nixpkgs#home-manager
 ```
 
 ### Development Environment
-
-Enter the isolated development shell:
-
 ```bash
-nix develop github:rfqma/multiverse --command zsh
+# Enter the default development shell
+nix develop github:rfqma/multiverse
 ```
 
-or after home manager setup:
-
 ```bash
-ndzsh
+# Use specific development environment
+nix develop github:rfqma/multiverse#minimal
+nix develop github:rfqma/multiverse#cpp
 ```
 
-This provides the declared development tools in an isolated environment, with some configuration loaded.
+### Home Manager (dotfiles)
+```bash
+# For macOS ARM (M1/M2/M3)
+home-manager switch --flake github:rfqma/multiverse#mac-arm
 
-## Project Structure
+# For Linux x86_64
+home-manager switch --flake github:rfqma/multiverse#linux-x86
+```
+
+### Project Templates
+```bash
+# Rust project
+nix flake init -t github:rfqma/multiverse#rust-dev
+
+# Go project
+nix flake init -t github:rfqma/multiverse#go-dev
+
+# JavaScript project
+nix flake init -t github:rfqma/multiverse#js-dev
+
+# Python project
+nix flake init -t github:rfqma/multiverse#python-dev
+
+# C++ project
+nix flake init -t github:rfqma/multiverse#cpp-dev
+```
+
+### 📦 Included Tools & Configurations
+
+#### Development Languages
+- **🦀 Rust** (rustc, cargo, rustfmt)
+- **🐹 Go** (go toolchain)
+- **🐍 Python** (3.12 + JupyterLab)
+- **🌐 JavaScript/Node.js** (nodejs, npm)
+- **🚀 C++** (gcc, cmake)
+
+#### Editors & IDEs
+- **📝 Zed** - Modern editor with AI integration
+- **📝 VSCode** - Full configuration with extensions and settings
+- **📝 Vim** (vim, nvim)
+
+#### Terminal & Shell
+- **Zsh** - Enhanced shell with custom aliases
+- **Starship** - Beautiful, informative prompt
+- **Tmux** - Terminal multiplexer with vi-mode
+- **Ghostty** - Fast, feature-rich terminal emulator
+
+#### System & Container Tools
+- **Git** - Configured with sensible defaults
+- **Podman** + **Podman Compose** - Container runtime
+- **Archive Tools** - 7zip, unzip, unrar, tar, gzip, etc.
+- **System Utilities** - htop, tree, curl, wget, jq
+
+### 🏗️ Configuration Structure
 
 ```
 multiverse/
-├── flake.nix             # Main flake configuration
-├── flake.lock            # Lock file for reproducible builds
-├── modules/
-│   ├── base.nix          # Cross-platform development tools
-│   ├── mac.nix         # macOS-specific packages
-│   └── linux.nix         # Linux-specific packages
-└── home/
-    ├── mac.nix           # macOS-specific home manager configuration
-    └── linux.nix         # Linux-specific home manager configuration
+├── home/
+│   ├── shared/           # Shared configurations
+│   │   ├── git.nix      # Git settings
+│   │   ├── shell.nix    # Zsh + Starship
+│   │   ├── terminal.nix # Tmux + Ghostty
+│   │   ├── editors.nix  # VSCode + Zed
+│   │   └── system-tools.nix # Podman, archives, etc.
+│   ├── mac-arm.nix      # macOS ARM configuration
+│   └── linux-x86.nix   # Linux x86_64 configuration
+├── nix/
+│   ├── shell.nix        # Development shells
+│   └── templates/       # Project templates
+└── flake.nix           # Main flake configuration
 ```
 
-## Useful Aliases
+### 🔧 Customization
 
-- `nr` → `npm run`
-- `ndzsh` → `nix develop github:rfqma/multiverse --command zsh`
+Fork this repository and modify the configurations in `home/shared/` to match your preferences:
+- **Git**: Update username/email in `git.nix
+- **Shell**: Add your aliases in `shell.nix
+- **VSCode**: Modify settings in `editors.nix
+- **Tools**: Add/remove packages in `tools.nix
 
-## Supported Systems
+### 📝 Usage Examples
+```bash
+# Quick development environment for any project
+nix develop github:rfqma/multiverse
 
-- **macOS**: Apple Silicon (aarch64-darwin)
-- **Linux**: x86_64 (x86_64-linux)
+# Apply dotfiles to new machine
+home-manager switch --flake github:rfqma/multiverse#mac-arm
+
+# Create new Rust project
+mkdir my-rust-app && cd my-rust-app
+nix flake init -t github:rfqma/multiverse#rust-dev
+nix develop
+```
