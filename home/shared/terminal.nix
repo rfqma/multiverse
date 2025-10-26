@@ -13,7 +13,6 @@
       set -g history-limit 50000
       set -sg escape-time 0
       set -g focus-events on
-
       # status bar customization
       set -g status-position top
       set -g status-style 'bg=default,fg=blue'
@@ -24,17 +23,15 @@
     '';
   };
 
-  # Ghostty config - will be overridden with platform-specific settings
   home.file.".config/ghostty/config".text = ''
     title = 👻
     font-size = 14
-    theme = 0x96f
+    theme = Ultra Dark
     shell-integration-features = no-cursor,sudo
     background-opacity = 0.92
     cursor-style = block
     mouse-hide-while-typing = true
     window-save-state = "always"
-
     # keybindings
     keybind = cmd+s>r=reload_config
     keybind = cmd+s>x=close_surface

@@ -90,19 +90,19 @@ nix flake update
 - **🚀 C++** (gcc, cmake)
 
 #### Editors & IDEs
-- **📝 Zed** - Modern editor with AI integration
-- **📝 VSCode** - Full configuration with extensions and settings
-- **📝 Vim** (vim, nvim)
+- [**📝 Zed**](https://zed.dev/) - Modern editor with AI integration
+- [**📝 VSCode**](https://code.visualstudio.com/) - Full configuration with extensions and settings
+- [**📝 Neovim**](https://neovim.io/) - (vim, nvim)
 
 #### Terminal & Shell
 - **Zsh** - Enhanced shell with custom aliases
-- **Starship** - Beautiful, informative prompt
-- **Tmux** - Terminal multiplexer with vi-mode
-- **Ghostty** - Fast, feature-rich terminal emulator
+- [**Starship**](https://starship.rs/) - Beautiful, informative prompt
+- [**Tmux**](https://github.com/tmux/tmux/wiki) - Terminal multiplexer with vi-mode
+- [**Ghostty**](https://ghostty.org/) - Fast, feature-rich terminal emulator
 
 #### System & Container Tools
 - **Git** - Configured with sensible defaults
-- **Podman** + **Podman Compose** - Container runtime
+- [**Podman**](https://podman.io/) + [**Podman Compose**](https://github.com/containers/podman-compose) - Container runtime
 - **Archive Tools** - 7zip
 - **System Utilities** - htop, tree, curl, wget, jq
 
@@ -124,3 +124,8 @@ multiverse/
 │   └── templates/       # Project templates
 └── flake.nix           # Main flake configuration
 ```
+
+### Limitation
+
+> \[!NOTE]
+> Currently GUI apps are **not** automatically linked to macOS Spotlight search and may not appear in system application menus or launchers. Some of it are dotfiles-based and may require manual download.

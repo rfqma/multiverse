@@ -9,7 +9,6 @@
     defaultEditor = false;
     viAlias = true;
     vimAlias = true;
-
     plugins = with pkgs.vimPlugins; [
       # File explorer
       nvim-tree-lua
@@ -40,7 +39,6 @@
       # Icons (for nvim-tree and others)
       nvim-web-devicons
     ];
-
     extraLuaConfig = ''
       -- Basic Settings
       vim.opt.number = true          -- Show line numbers
@@ -163,18 +161,6 @@
       {
         context = "Workspace";
         bindings = {
-          # "shift shift": "file_finder::Toggle"
-        };
-      }
-      {
-        context = "Editor && vim_mode == insert";
-        bindings = {
-          # "j k": "vim::NormalBefore"
-        };
-      }
-      {
-        context = "Workspace";
-        bindings = {
           cmd-shift-g = "git_panel::ToggleFocus";
         };
       }
@@ -279,42 +265,29 @@
     enable = true;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
-        # Nix
         bbenoist.nix
-        # Web Development
         bradlc.vscode-tailwindcss
         christian-kohler.npm-intellisense
         christian-kohler.path-intellisense
-        # Git
         eamodio.gitlens
-        # HTML/CSS
         ecmel.vscode-html-css
-        # GitHub
         github.copilot
         github.copilot-chat
         github.github-vscode-theme
         github.vscode-github-actions
-        # Go
         golang.go
-        # Docker
         ms-azuretools.vscode-docker
-        # Python
         ms-python.python
         ms-python.vscode-pylance
         ms-toolsai.jupyter
-        # Themes & Icons
         pkief.material-icon-theme
-        # Markdown
         shd101wyy.markdown-preview-enhanced
-        # Svelte
         svelte.svelte-vscode
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         # Extensions that aren't in nixpkgs yet
       ];
       userSettings = {
         "editor.formatOnSave" = true;
-
-        # Dart specific settings
         "[dart]" = {
           "editor.formatOnSave" = true;
           "editor.formatOnType" = true;
@@ -325,8 +298,6 @@
           "editor.tabCompletion" = "onlySnippets";
           "editor.wordBasedSuggestions" = "off";
         };
-
-        # Go specific settings
         "[go]" = {
           "editor.insertSpaces" = false;
           "editor.formatOnSave" = true;
@@ -334,20 +305,14 @@
             "source.organizeImports" = "explicit";
           };
         };
-
-        # TypeScript React
         "[typescriptreact]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
-
-        # TailwindCSS
         "tailwindCSS.includeLanguages" = {
           "html" = "html";
           "javascript" = "javascript";
           "css" = "css";
         };
-
-        # Editor settings
         "editor.quickSuggestions" = {
           "strings" = true;
         };
@@ -363,14 +328,10 @@
         "editor.formatOnPaste" = true;
         "editor.inlineSuggest.enabled" = true;
         "editor.minimap.enabled" = false;
-
-        # Terminal
         "terminal.integrated.fontFamily" = "'Liga SFMono Nerd Font'";
         "terminal.integrated.env.osx" = {};
         "terminal.integrated.env.linux" = {};
         "terminal.integrated.env.windows" = {};
-
-        # Workbench
         "workbench.sideBar.location" = "right";
         "workbench.startupEditor" = "none";
         "workbench.iconTheme" = "material-icon-theme";
@@ -379,35 +340,19 @@
         "workbench.editorAssociations" = {
           "*.docx" = "default";
         };
-
-        # Emmet
         "emmet.includeLanguages" = {
           "javascript" = "javascriptreact";
           "typescript" = "typescriptreact";
         };
-
-        # CSS
         "css.lint.unknownAtRules" = "ignore";
-
-        # JavaScript
         "javascript.updateImportsOnFileMove.enabled" = "always";
-
-        # Notebook
         "notebook.cellFocusIndicator" = "border";
         "notebook.formatOnSave.enabled" = true;
         "notebook.output.scrolling" = true;
         "notebook.output.textLineLimit" = 100;
-
-        # Git
         "git.autofetch" = true;
-
-        # Remote
         "remote.autoForwardPortsSource" = "hybrid";
-
-        # Solidity
         "solidity.telemetry" = true;
-
-        # Chat/AI
         "chat.mcp.discovery.enabled" = {
           "claude-desktop" = true;
           "windsurf" = true;
@@ -421,14 +366,8 @@
             "allowedModels" = ["copilot/claude-sonnet-4.5"];
           };
         };
-
-        # Svelte
         "svelte.enable-ts-plugin" = true;
-
-        # GitHub Copilot
         "github.copilot.nextEditSuggestions.enabled" = true;
-
-        # GitLens
         "gitlens.ai.model" = "vscode";
         "gitlens.ai.vscode.model" = "copilot:gpt-4.1";
       };

@@ -5,10 +5,9 @@
     enable = true;
     shellAliases = {
       nr = "npm run";
-      nd = "nix develop github:rfqma/multiverse";
-      ll = "ls -la";
-      la = "ls -A";
-      l = "ls -CF";
+      nddefault = "nix develop github:rfqma/multiverse";
+      ndminimal = "nix develop github:rfqma/multiverse#minimal";
+      ndcpp = "nix develop github:rfqma/multiverse#cpp";
       zed = "zeditor";
     };
     sessionVariables = {};
