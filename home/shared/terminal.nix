@@ -24,10 +24,6 @@
     '';
   };
 
-  programs.ghostty-bin = {
-    enable = true;
-  };
-
   # Ghostty config - will be overridden with platform-specific settings
   home.file.".config/ghostty/config".text = ''
     title = 👻
