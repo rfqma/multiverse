@@ -9,6 +9,7 @@
       ll = "ls -la";
       la = "ls -A";
       l = "ls -CF";
+      zed = "zeditor";
     };
     sessionVariables = {};
 
