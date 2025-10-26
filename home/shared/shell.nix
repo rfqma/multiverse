@@ -17,15 +17,7 @@
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      if [ -n "$IN_ISOLATED_SHELL" ]; then
-        export GOPATH="$NIX_HOME/go"
-        export CARGO_HOME="$NIX_HOME/.cargo"
-        export PATH="$NIX_HOME/.local/bin:$PATH"
-      else
-        export GOPATH="$HOME/.nix/go"
-        export CARGO_HOME="$HOME/.nix/.cargo"
-        export PATH="$HOME/.local/bin:$PATH"
-      fi
+      [ -r ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] && source ~/.nix-profile/etc/profile.d/hm-session-vars.s
 
       eval "$(starship init zsh)"
     '';
