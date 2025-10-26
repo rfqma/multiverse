@@ -138,6 +138,7 @@
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
             config.allowUnfree = true;
+            config.allowBroken = true;
           };
           modules = [
             ./home/mac-arm.nix
