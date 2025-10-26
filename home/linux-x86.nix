@@ -9,11 +9,6 @@
 
   home.packages = with pkgs; [
     tmux
-    bitwarden-desktop
-    spotify
-    discord
-    whatsapp-electron
-    telegram-desktop
   ];
 
   # Linux-specific overrides can go here
