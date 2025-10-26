@@ -24,7 +24,7 @@
     '';
   };
 
-  programs.ghostty = {
+  programs.ghostty-bin = {
     enable = true;
   };
 
