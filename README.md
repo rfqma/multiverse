@@ -2,6 +2,9 @@
 
 A comprehensive, cross-platform development environment and dotfiles configuration powered by Nix flakes and Home Manager.
 
+> \[!NOTE]
+> Currently GUI apps are **not** automatically linked to macOS Spotlight search and may not appear in system application menus or launchers. Some of it are dotfiles-based and may require manual download.
+
 ## ✨ What's Inside
 
 - **🖥️ Cross-Platform**: macOS (Intel/ARM) and Linux (x86_64/ARM64)
@@ -115,8 +118,8 @@ multiverse/
 │   │   ├── git.nix      # Git settings
 │   │   ├── shell.nix    # Zsh + Starship
 │   │   ├── terminal.nix # Tmux + Ghostty
-│   │   ├── editors.nix  # VSCode + Zed
-│   │   └── system-tools.nix # Podman, archives, etc.
+│   │   ├── editors.nix  # Neovim + Zed
+│   │   └── tools.nix    # Podman, archives, etc.
 │   ├── mac-arm.nix      # macOS ARM configuration
 │   └── linux-x86.nix   # Linux x86_64 configuration
 ├── nix/
@@ -124,8 +127,3 @@ multiverse/
 │   └── templates/       # Project templates
 └── flake.nix           # Main flake configuration
 ```
-
-### Limitation
-
-> \[!NOTE]
-> Currently GUI apps are **not** automatically linked to macOS Spotlight search and may not appear in system application menus or launchers. Some of it are dotfiles-based and may require manual download.
