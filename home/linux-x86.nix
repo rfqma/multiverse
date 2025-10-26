@@ -8,7 +8,7 @@
   ];
 
   home.packages = with pkgs; [
-    tmux  # Ensure tmux is available system-wide
+    tmux
     bitwarden-desktop
     spotify
     discord
