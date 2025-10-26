@@ -11,7 +11,7 @@
     tmux
   ];
 
-  home.activation.linkApplications = pkgs.lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.linkApplications = lib.hm.dag.entryAfter ["writeBoundary"] ''
     echo "linking gui applications..."
     $DRY_RUN_CMD mkdir -p ~/Applications/Home\ Manager\ Apps
 
