@@ -9,7 +9,6 @@
       ndminimal = "nix develop github:rfqma/multiverse#minimal";
       ndcpp = "nix develop github:rfqma/multiverse#cpp";
       ndjs = "nix develop github:rfqma/multiverse#js";
-      zed = "zeditor";
     };
     sessionVariables = {};
 

@@ -28,6 +28,7 @@
     font-size = 14
     theme = Ultra Dark
     shell-integration-features = no-cursor,sudo
+    command = zsh
     background-opacity = 0.92
     cursor-style = block
     mouse-hide-while-typing = true
