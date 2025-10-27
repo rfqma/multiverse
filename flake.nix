@@ -73,6 +73,7 @@
           inherit (shell)
             minimal
             cpp
+            js
             ;
         }
         // {

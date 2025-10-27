@@ -9,7 +9,7 @@ A comprehensive, cross-platform development environment and dotfiles configurati
 
 - **🖥️ Cross-Platform**: macOS (Intel/ARM) and Linux (x86_64/ARM64)
 - **🛠️ Development Tools**: Rust, Go, Python, C++, Node.js
-- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Tmux, Ghostty, Zed, VSCode, Vim, Neovim
+- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Tmux, Ghostty, Zed, Vim, Neovim
 - **📦 System Tools**: Podman, Podman Compose, Archive tools (7zip), htop, curl, jq
 - **🏠 Home Manager**: Declarative dotfiles management
 - **📋 Template System**: Quick-start templates for new projects
@@ -38,9 +38,18 @@ nix develop github:rfqma/multiverse
 ```
 
 ```bash
-# specific development environment
+# nodejs, rust, go, python
 nix develop github:rfqma/multiverse#minimal
+```
+
+```bash
+# cpp
 nix develop github:rfqma/multiverse#cpp
+```
+
+```bash
+# nodejs
+nix develop github:rfqma/multiverse#js
 ```
 
 ### Home Manager (dotfiles)
@@ -94,7 +103,6 @@ nix flake update
 
 #### Editors & IDEs
 - [**📝 Zed**](https://zed.dev/) - Modern editor with AI integration
-- [**📝 VSCode**](https://code.visualstudio.com/) - Full configuration with extensions and settings
 - [**📝 Neovim**](https://neovim.io/) - (vim, nvim)
 
 #### Terminal & Shell
