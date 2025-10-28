@@ -11,6 +11,23 @@
     tmux
   ];
 
-  # Linux-specific overrides can go here
-  # For example, different keybindings or themes
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      nr = "npm run";
+      nddefault = "nix develop github:rfqma/multiverse";
+      ndminimal = "nix develop github:rfqma/multiverse#minimal";
+      ndcpp = "nix develop github:rfqma/multiverse#cpp";
+      ndjs = "nix develop github:rfqma/multiverse#js";
+    };
+    sessionVariables = {};
+
+    initContent = ''
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+
+      eval "$(starship init zsh)"
+    '';
+  };
 }
