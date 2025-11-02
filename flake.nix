@@ -53,7 +53,6 @@
         { pkgs, system }:
         let
           common = with pkgs; [
-            opencode
             gemini-cli
             ngrok
             self.formatter.${system}
