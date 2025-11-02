@@ -56,7 +56,9 @@ nix develop github:rfqma/multiverse#js
 ```bash
 # For macOS ARM
 home-manager switch --flake github:rfqma/multiverse#mac-arm --refresh
+```
 
+```bash
 # For Linux x86_64
 home-manager switch --flake github:rfqma/multiverse#linux-x86 --refresh
 ```
@@ -69,12 +71,20 @@ mkdir my-project && cd my-project
 ```bash
 # Rust project
 nix flake init -t github:rfqma/multiverse#rust-dev
+```
+```bash
 # Go project
 nix flake init -t github:rfqma/multiverse#go-dev
+```
+```bash
 # JavaScript project
 nix flake init -t github:rfqma/multiverse#js-dev
+```
+```bash
 # Python project
 nix flake init -t github:rfqma/multiverse#python-dev
+```
+```bash
 # C++ project
 nix flake init -t github:rfqma/multiverse#cpp-dev
 ```
@@ -87,7 +97,8 @@ nix develop
 ```bash
 # Clear Nix cache
 nix registry pin github:rfqma/multiverse
-
+```
+```bash
 # Update flake inputs
 nix flake update
 ```
