@@ -155,7 +155,7 @@
       "react-typescript-snippets"
       "python-snippets"
       "mcp-server-figma"
-      "matte-black"
+      "nvim-nightfox"
     ];
     userKeymaps = [
       {
@@ -255,8 +255,8 @@
       buffer_font_size = 11.0;
       theme = {
         mode = "system";
-        light = "Matte Black";
-        dark = "Matte Black";
+        light = "Carbonfox - blurred";
+        dark = "Carbonfox - blurred";
       };
     };
   };

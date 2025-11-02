@@ -1,28 +1,6 @@
 { pkgs, lib, ... }:
 
 {
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    keyMode = "vi";
-    mouse = true;
-    shortcut = "a"; # Sets prefix to C-a
-    terminal = "screen-256color";
-    extraConfig = ''
-      # sensible defaults
-      set -g history-limit 50000
-      set -sg escape-time 0
-      set -g focus-events on
-      # status bar customization
-      set -g status-position top
-      set -g status-style 'bg=default,fg=blue'
-      set -g status-left ""
-      set -g status-right '#[fg=yellow,bold]%Y-%m-%d %H:%M'
-      set -g window-status-current-format '#[bold,fg=green] #I: #W '
-      set -g window-status-format '#[fg=gray] #I: #W '
-    '';
-  };
-
   home.file.".config/ghostty/config".text = ''
     title = 👻
     font-size = 14

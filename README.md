@@ -9,7 +9,7 @@ A comprehensive, cross-platform development environment and dotfiles configurati
 
 - **🖥️ Cross-Platform**: macOS (Intel/ARM) and Linux (x86_64/ARM64)
 - **🛠️ Development Tools**: Rust, Go, Python, C++, Node.js
-- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Tmux, Ghostty, Zed, Vim, Neovim
+- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Ghostty, Zed, Vim, Neovim
 - **📦 System Tools**: Podman, Podman Compose, Archive tools (7zip), htop, curl, jq
 - **🏠 Home Manager**: Declarative dotfiles management
 - **📋 Template System**: Quick-start templates for new projects
@@ -119,7 +119,6 @@ nix flake update
 #### Terminal & Shell
 - **Zsh** - Enhanced shell with custom aliases
 - [**Starship**](https://starship.rs/) - Beautiful, informative prompt
-- [**Tmux**](https://github.com/tmux/tmux/wiki) - Terminal multiplexer with vi-mode
 - [**Ghostty**](https://ghostty.org/) - Fast, feature-rich terminal emulator
 
 #### System & Container Tools
@@ -136,7 +135,7 @@ multiverse/
 │   ├── shared/           # Shared configurations
 │   │   ├── git.nix      # Git settings
 │   │   ├── shell.nix    # Zsh + Starship
-│   │   ├── terminal.nix # Tmux + Ghostty
+│   │   ├── terminal.nix # Ghostty
 │   │   ├── editors.nix  # Neovim + Zed
 │   │   └── tools.nix    # Podman, archives, etc.
 │   ├── mac-arm.nix      # macOS ARM configuration
