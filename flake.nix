@@ -67,7 +67,7 @@
               inherit name runtimeInputs text;
             };
 
-          shell = import ./nix/shell.nix { inherit pkgs; };
+          shell = import ./nix/shell.nix { inherit pkgs common; };
         in
         {
           inherit (shell)

@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, common ? [] }:
 
 {
   minimal = pkgs.mkShell {
@@ -12,7 +12,7 @@
       go
       python312
       python312Packages.jupyterlab
-    ];
+    ] ++ common;
 
     WHERE_AM_I = "in the multiverse!";
 
@@ -35,7 +35,7 @@
     packages = with pkgs; [
       gcc
       cmake
-    ];
+    ] ++ common;
 
     shellHook = ''
         echo "❄️ triggered a shell hook for a Nix development environment with c++."
@@ -55,7 +55,7 @@
   js = pkgs.mkShell {
     packages = with pkgs; [
       nodejs
-    ];
+    ] ++ common;
 
     shellHook = ''
         echo "❄️ triggered a shell hook for a Nix development environment with nodejs."
