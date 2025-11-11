@@ -71,4 +71,25 @@
         fi
     '';
   };
+
+  laravel = pkgs.mkShell {
+    packages = with pkgs; [
+      php84
+      php84Packages.composer
+    ] ++ common;
+
+    shellHook = ''
+        echo "❄️ triggered a shell hook for a Nix development environment with laravel."
+        echo "❄️ welcome!"
+
+        # launch zsh
+        if [ -n "$ZSH_VERSION" ]; then
+          # Already in zsh, do nothing
+          :
+        elif command -v zsh >/dev/null 2>&1; then
+          # Launch zsh if available
+          exec zsh
+        fi
+    '';
+  };
 }

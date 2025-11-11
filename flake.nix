@@ -74,6 +74,7 @@
             minimal
             cpp
             js
+            laravel
             ;
         }
         // {
