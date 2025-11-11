@@ -10,5 +10,9 @@
     curl           # HTTP client
     wget           # File downloader
     jq             # JSON processor
+
+    nixfmt-rfc-style # Formats your Nix code (like prettier/black)
+    nil # language server for Nix
+    nixd # nix language server as well
   ];
 }
