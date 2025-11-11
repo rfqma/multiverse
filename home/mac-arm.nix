@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   imports = [
     ./shared/git.nix
-    ./shared/shell.nix
     ./shared/terminal.nix
     ./shared/editors.nix
     ./shared/tools.nix
