@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./shared/git.nix
     ./shared/terminal.nix
@@ -7,6 +8,7 @@
   ];
 
   home.packages = with pkgs; [
+    ngrok
   ];
 
   programs.zsh = {
@@ -14,12 +16,14 @@
     shellAliases = {
       nr = "npm run";
       nddefault = "nix develop github:rfqma/multiverse";
-      ndminimal = "nix develop github:rfqma/multiverse#minimal";
+      ndpython = "nix develop github:rfqma/multiverse#python";
+      ndgo = "nix develop github:rfqma/multiverse#go";
+      ndrust = "nix develop github:rfqma/multiverse#rust";
       ndcpp = "nix develop github:rfqma/multiverse#cpp";
-      ndjs = "nix develop github:rfqma/multiverse#js";
+      ndnodejs = "nix develop github:rfqma/multiverse#nodejs";
       ndlaravel = "nix develop github:rfqma/multiverse#laravel";
     };
-    sessionVariables = {};
+    sessionVariables = { };
 
     initContent = ''
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then

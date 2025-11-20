@@ -5,9 +5,6 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixpkgs-unstable";
     };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs = {
@@ -20,7 +17,6 @@
     {
       self,
       nixpkgs,
-      flake-utils,
       home-manager,
       ...
     }:
@@ -39,60 +35,49 @@
           system:
           f {
             inherit system;
-            pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
           }
         );
-
-      runPkg = pkgs: pkg: "${pkgs.${pkg}}/bin/${pkg}";
     in
     {
-      # Add formatter
-      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
-
       devShells = forEachSupportedSystem (
         { pkgs, system }:
         let
           common = with pkgs; [
             gemini-cli
-            ngrok
             self.formatter.${system}
           ];
-
-          scripts = [
-          ];
-
-          script =
-            name: runtimeInputs: text:
-            pkgs.writeShellApplication {
-              inherit name runtimeInputs text;
-            };
 
           shell = import ./nix/shell.nix { inherit pkgs common; };
         in
         {
           inherit (shell)
-            minimal
+            python
+            go
+            rust
             cpp
-            js
+            nodejs
             laravel
             ;
         }
         // {
           default = pkgs.mkShellNoCC {
-            packages = common ++ scripts;
+            packages = common;
 
             shellHook = ''
-                echo "❄️triggered a shell hook for a Nix development environment."
-                echo "❄️ welcome!"
+              echo "❄️ triggered a shell hook for a nix development environment"
 
-                # launch zsh
-                if [ -n "$ZSH_VERSION" ]; then
-                  # Already in zsh, do nothing
-                  :
-                elif command -v zsh >/dev/null 2>&1; then
-                  # Launch zsh if available
-                  exec zsh
-                fi
+              # launch zsh
+              if [ -n "$ZSH_VERSION" ]; then
+                # Already in zsh, do nothing
+                :
+              elif command -v zsh >/dev/null 2>&1; then
+                # Launch zsh if available
+                exec zsh
+              fi
             '';
           };
         }
@@ -109,9 +94,9 @@
           description = "Go dev environment template";
         };
 
-        js-dev = {
-          path = ./nix/templates/dev/js;
-          description = "JavaScript dev environment template";
+        nodejs-dev = {
+          path = ./nix/templates/dev/nodejs;
+          description = "Node.js dev environment template";
         };
 
         python-dev = {
@@ -136,13 +121,13 @@
       };
 
       homeConfigurations = {
-        "mac-arm" = home-manager.lib.homeManagerConfiguration {
+        "darwin-arm64" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
             config.allowUnfree = true;
           };
           modules = [
-            ./home/mac-arm.nix
+            ./home/darwin-arm64.nix
             {
               home = {
                 username = "rfqma";
@@ -153,13 +138,13 @@
           ];
         };
 
-        "linux-x86" = home-manager.lib.homeManagerConfiguration {
+        "linux-x64" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
           modules = [
-            ./home/linux-x86.nix
+            ./home/linux-x64.nix
             {
               home = {
                 username = "rfqma";

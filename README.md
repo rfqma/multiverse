@@ -1,6 +1,6 @@
 # 🌌 Multiverse - Nix Development Environment
 
-A comprehensive, cross-platform development environment and dotfiles configuration powered by Nix flakes and Home Manager.
+a comprehensive, cross-platform development environment and dotfiles configuration powered by Nix flakes and Home Manager.
 
 > \[!NOTE]
 > Currently GUI apps are **not** automatically linked to macOS Spotlight search and may not appear in system application menus or launchers. Some of it are dotfiles-based and may require manual download.
@@ -9,7 +9,7 @@ A comprehensive, cross-platform development environment and dotfiles configurati
 
 - **🖥️ Cross-Platform**: macOS (Intel/ARM) and Linux (x86_64/ARM64)
 - **🛠️ Development Tools**: Rust, Go, Python, C++, Node.js, Laravel
-- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Ghostty, Zed, Vim, Neovim
+- **⚙️ Consistent Configuration**: Git, Zsh, Starship, Ghostty, Zed, Neovim
 - **📦 System Tools**: Podman, Podman Compose, Archive tools (7zip), htop, curl, jq
 - **🏠 Home Manager**: Declarative dotfiles management
 - **📋 Template System**: Quick-start templates for new projects
@@ -38,8 +38,18 @@ nix develop github:rfqma/multiverse
 ```
 
 ```bash
-# nodejs, rust, go, python
-nix develop github:rfqma/multiverse#minimal
+# python
+nix develop github:rfqma/multiverse#python
+```
+
+```bash
+# go
+nix develop github:rfqma/multiverse#go
+```
+
+```bash
+# rust
+nix develop github:rfqma/multiverse#rust
 ```
 
 ```bash
@@ -49,7 +59,7 @@ nix develop github:rfqma/multiverse#cpp
 
 ```bash
 # nodejs
-nix develop github:rfqma/multiverse#js
+nix develop github:rfqma/multiverse#nodejs
 ```
 
 ```bash
@@ -61,12 +71,12 @@ nix develop github:rfqma/multiverse#laravel
 
 ```bash
 # For macOS ARM
-home-manager switch --flake github:rfqma/multiverse#mac-arm --refresh
+home-manager switch --flake github:rfqma/multiverse#darwin-arm64 --refresh
 ```
 
 ```bash
 # For Linux x86_64
-home-manager switch --flake github:rfqma/multiverse#linux-x86 --refresh
+home-manager switch --flake github:rfqma/multiverse#linux-x64 --refresh
 ```
 
 ### Project Templates
@@ -77,8 +87,8 @@ mkdir my-project && cd my-project
 ```
 
 ```bash
-# Rust project
-nix flake init -t github:rfqma/multiverse#rust-dev
+# C++ project
+nix flake init -t github:rfqma/multiverse#cpp-dev
 ```
 
 ```bash
@@ -87,8 +97,8 @@ nix flake init -t github:rfqma/multiverse#go-dev
 ```
 
 ```bash
-# JavaScript project
-nix flake init -t github:rfqma/multiverse#js-dev
+# Node.js project
+nix flake init -t github:rfqma/multiverse#nodejs-dev
 ```
 
 ```bash
@@ -97,8 +107,8 @@ nix flake init -t github:rfqma/multiverse#python-dev
 ```
 
 ```bash
-# C++ project
-nix flake init -t github:rfqma/multiverse#cpp-dev
+# Rust project
+nix flake init -t github:rfqma/multiverse#rust-dev
 ```
 
 ```bash
@@ -154,12 +164,11 @@ multiverse/
 ├── home/
 │   ├── shared/          # Shared configurations
 │   │   ├── git.nix      # Git settings
-│   │   ├── shell.nix    # Zsh + Starship
 │   │   ├── terminal.nix # Ghostty
 │   │   ├── editors.nix  # Neovim + Zed
 │   │   └── tools.nix    # Podman, archives, etc.
-│   ├── mac-arm.nix      # macOS ARM configuration
-│   └── linux-x86.nix    # Linux x86_64 configuration
+│   ├── darwin-arm64.nix      # macOS ARM configuration
+│   └── linux-x64.nix    # Linux x86_64 configuration
 ├── nix/
 │   ├── shell.nix        # Development shells
 │   └── templates/       # Project templates
