@@ -43,6 +43,9 @@
         );
     in
     {
+      # formatter
+      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
+
       devShells = forEachSupportedSystem (
         { pkgs, system }:
         let
