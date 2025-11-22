@@ -107,6 +107,8 @@
       with pkgs;
       [
         nodejs
+        pnpm
+        bun
       ]
       ++ common;
 
