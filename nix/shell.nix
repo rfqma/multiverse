@@ -61,6 +61,7 @@
       [
         rustc
         rustfmt
+        rust-src
         cargo
       ]
       ++ common;
@@ -80,6 +81,8 @@
   };
 
   cpp = pkgs.mkShell {
+    name = "cpp";
+
     packages =
       with pkgs;
       [
@@ -103,6 +106,8 @@
   };
 
   nodejs = pkgs.mkShell {
+    name = "nodejs";
+
     packages =
       with pkgs;
       [
@@ -127,6 +132,8 @@
   };
 
   laravel = pkgs.mkShell {
+    name = "laravel";
+
     packages =
       with pkgs;
       [
