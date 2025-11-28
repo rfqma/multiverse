@@ -61,7 +61,6 @@
       [
         rustc
         rustfmt
-        rust-src
         cargo
       ]
       ++ common;
