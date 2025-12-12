@@ -9,7 +9,7 @@
         email = "abelcaster025@gmail.com";
       };
       init.defaultBranch = "main";
-      pull.rebase = false;
+      pull.rebase = true;
       core.autocrlf = "input";
       push.default = "simple";
     };
